@@ -1,0 +1,5 @@
+.scrollable-div {
+  height: max-content; /* set a fixed height for the div */
+  overflow-y: scroll; /* enable vertical scrollbar */
+  overflow-x: hidden; /* hide horizontal scrollbar */
+}

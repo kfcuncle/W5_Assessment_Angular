@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>New Task</h2>
+<mat-dialog-content [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-5">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Ex. Udemy Java Course"
+        />
+        <mat-hint>Title</mat-hint>
+        @if (!taskForm.get('title').valid && taskForm.get('title').touched) {
+        <mat-error>Title is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. Have to Completed Before 30 March 2024"
+        formControlName="description"
+      ></textarea>
+      <mat-hint>Complete before asdsa</mat-hint>
+      @if (!taskForm.get('description').valid &&
+      taskForm.get('description').touched) {
+      <mat-error>Description is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+      @if (!taskForm.get('category').valid && taskForm.get('category').touched)
+      {
+      <mat-error>Category is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSubmit()" [disabled]="!taskForm.valid">
+    {{ editMode ? "Update" : "Add" }}
+  </button>
+</mat-dialog-actions>

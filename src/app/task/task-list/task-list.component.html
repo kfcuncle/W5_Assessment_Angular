@@ -1,0 +1,38 @@
+<table class="table mb-4">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Category</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Actions</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (task of tasks; track $index){
+    <tr>
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ task.title }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.category }}</td>
+      <td>{{ task.dueDate }}</td>
+      <td>
+        <button
+          type="submit"
+          class="btn btn-success ms-1"
+          (click)="onUpdate($index)"
+        >
+          Update
+        </button>
+      </td>
+      <td>
+        <button type="submit" class="btn btn-danger" (click)="onDelete($index)">
+          Delete
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
