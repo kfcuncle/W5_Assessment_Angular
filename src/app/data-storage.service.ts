@@ -10,7 +10,7 @@ export class DataStorageService {
   constructor(private http: HttpClient, private taskService: TaskService) {}
 
   fetchTasks() {
-    return this.http.get<Task[]>(environment.baseUrl + '/tasksExist').pipe(
+    return this.http.get<Task[]>(environment.baseUrl + '/tasks').pipe(
       tap((tasks) => {
         this.taskService.setTasks(tasks);
       })

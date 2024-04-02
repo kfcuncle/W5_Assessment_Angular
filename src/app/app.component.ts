@@ -8,5 +8,9 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class AppComponent {
   title = 'W5_Assessment_Angular';
+  constructor(private keycloak: KeycloakService) {}
 
+  logout() {
+    this.keycloak.logout()
+  }
 }
